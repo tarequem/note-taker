@@ -1,10 +1,9 @@
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
 
 //for creating unique ids
 var uniqid = require('uniqid');
 
-//routes 
 module.exports = (app) => {
     // reads db.json and returns all saved notes as JSON
     app.get('/api/notes', (req, res) => {
@@ -31,8 +30,8 @@ module.exports = (app) => {
     // DELETE /api/notes/:id delete note based on query parameter 
     app.delete('/api/notes/:id', (req, res) => {
         let db = JSON.parse(fs.readFileSync('db/db.json'));
-        let deleteNotes = db.filter(item => item.id !== req.params.id);
-        fs.writeFileSync('db/db.json', JSON.stringify(deleteNotes));
-        res.json(deleteNotes);
-    })
+        let deleteNote = db.filter(item => item.id !== req.params.id);
+        fs.writeFileSync('db/db.json', JSON.stringify(deleteNote));
+        res.json(deleteNote);
+    });
 };
