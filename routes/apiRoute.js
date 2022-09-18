@@ -18,7 +18,7 @@ module.exports = (app) => {
         let userNote = {
             title: req.body.title,
             text: req.body.text,
-            // creating unique ids
+            // creating unique ids for each note
             id: uniqid(),
         };
         // push created note to db.json file
